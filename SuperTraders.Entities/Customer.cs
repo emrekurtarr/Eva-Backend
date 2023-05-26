@@ -4,9 +4,9 @@ namespace SuperTraders.Entities
 {
     public class Customer : BaseEntity
     {
-        public int ID { get; set; }
+        public int CustomerId { get; set; }
         public string FullName { get; set; }
-
+        public int PortfolioId { get; set; }
         public Portfolio Portfolio { get; set; }
     }
 }

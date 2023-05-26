@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SuperTraders.DAL.DataSeed.Configurations;
 using SuperTraders.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
 {
@@ -21,6 +17,14 @@ namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
         public DbSet<Share> Shares { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Data seed operations 
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new PortfolioConfiguration());
+            modelBuilder.ApplyConfiguration(new ShareConfiguration());
+            modelBuilder.ApplyConfiguration(new TradeConfiguration());
+        }
 
     }
 }

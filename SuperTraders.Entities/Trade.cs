@@ -1,4 +1,5 @@
 ﻿using SuperTraders.Entities.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SuperTraders.Entities
 {
@@ -6,12 +7,12 @@ namespace SuperTraders.Entities
     {
 
         public int ID  { get; set; }
+        [ForeignKey("Share")]
         public string ShareSymbol { get; set; }
         public bool IsActive { get; set; }
         public int Quantity { get; set; }
         public Position Direction { get; set; }
-
-
+        public int PortfolioId { get; set; }
         public Share Share { get; set; }
         public Portfolio Portfolio { get; set; }
 

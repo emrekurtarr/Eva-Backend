@@ -1,64 +1,83 @@
-﻿using SuperTraders.DAL.Repository.Interfaces.BaseRepos;
+﻿using Microsoft.EntityFrameworkCore;
+using SuperTraders.DAL.Repository.Interfaces.EntityFramework.BaseRepos;
 using SuperTraders.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
 {
     public class GenericBaseEFRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
+
+        protected readonly EFDbContext _dbContext;
+        private readonly DbSet<T> _dbSet;
+
+
+        public GenericBaseEFRepository(EFDbContext dbContext)
+        {
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<T>();
+        }
+
         public T Add(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            _dbContext.SaveChanges();
+
+            return entity;
         }
 
-        public Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity;
         }
 
-        public long Delete(string id)
+        public int Delete(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
+            return _dbContext.SaveChanges();
+
         }
 
-        public Task<long> DeleteAsync(string id)
+        public async Task<int> DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+             _dbSet.Remove(entity);
+            return await _dbContext.SaveChangesAsync();
         }
 
         public T Get(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dbSet.Where(predicate).FirstOrDefault();
         }
 
         public List<T> GetAll(Expression<Func<T, bool>>? predicate = null)
         {
-            throw new NotImplementedException();
+            List<T> result = predicate == null ? _dbSet.ToList() : _dbSet.Where(predicate).ToList();
+
+            return result;
         }
 
-        public Task<T> GetAsync(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _dbSet.Where(predicate).FirstOrDefaultAsync();
         }
 
-        public Task<List<T>> GetListAsync(Expression<Func<T, bool>>? predicate = null)
+        public async Task<List<T>> GetListAsync(Expression<Func<T, bool>>? predicate = null)
         {
-            throw new NotImplementedException();
+            List<T> result =  predicate == null ? await _dbSet.ToListAsync() : await _dbSet.Where(predicate).ToListAsync();
+
+            return result;
         }
 
         public T Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return entity;
         }
 
-        public Task<T> UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
