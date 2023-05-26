@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SuperTraders.Entities.Base;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperTraders.Entities
 {
-    public class Share
+    public class Share : BaseEntity
     {
 
         public string Symbol { get; set; }

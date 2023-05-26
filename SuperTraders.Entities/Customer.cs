@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SuperTraders.Entities.Base;
 
 namespace SuperTraders.Entities
 {
-    public class Customer
+    public class Customer : BaseEntity
     {
         public int ID { get; set; }
         public string FullName { get; set; }
