@@ -10,9 +10,8 @@ namespace SuperTraders.DAL.DataSeed.Configurations
     {
         public void Configure(EntityTypeBuilder<Portfolio> builder)
         {
-            builder.HasOne(x => x.Customer).WithOne(y => y.Portfolio).HasForeignKey<Customer>(z => z.PortfolioId);
+            
             builder.HasMany(c => c.Trades).WithOne(e => e.Portfolio);
-
 
 
             builder.HasData(
@@ -22,7 +21,7 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     Balance = 100,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CustomerId = 1,
+                    CustomerId = 1
                 },
                 new Portfolio
                 {
@@ -30,7 +29,7 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     Balance = 90,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CustomerId = 2,
+                    CustomerId = 2
                 },
                 new Portfolio
                 {
@@ -38,7 +37,7 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     Balance = 85,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CustomerId = 3,
+                    CustomerId = 3
                 },
                 new Portfolio
                 {
@@ -46,7 +45,7 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     Balance = 80,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CustomerId = 4,
+                    CustomerId = 4
                 },
                 new Portfolio
                 {
@@ -54,7 +53,7 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     Balance = 75,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CustomerId = 5,
+                    CustomerId = 5
                 }
 
                 );

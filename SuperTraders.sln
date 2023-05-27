@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTraders.API", "SuperTraders.API\SuperTraders.API.csproj", "{8905ACD2-12F7-48A3-8997-53AB79179A3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperTraders.API", "SuperTraders.API\SuperTraders.API.csproj", "{8905ACD2-12F7-48A3-8997-53AB79179A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTraders.DAL", "SuperTraders.DAL\SuperTraders.DAL.csproj", "{C54E721B-682F-4698-8E07-4CDE681FC6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperTraders.DAL", "SuperTraders.DAL\SuperTraders.DAL.csproj", "{C54E721B-682F-4698-8E07-4CDE681FC6EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTraders.Entities", "SuperTraders.Entities\SuperTraders.Entities.csproj", "{F0DB4985-1668-4EE3-B2F1-498964063EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperTraders.Entities", "SuperTraders.Entities\SuperTraders.Entities.csproj", "{F0DB4985-1668-4EE3-B2F1-498964063EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTraders.Business", "SuperTraders.Business\SuperTraders.Business.csproj", "{E5F4EE86-5322-4E5F-9E15-6A278DF6ED0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperTraders.Business", "SuperTraders.Business\SuperTraders.Business.csproj", "{E5F4EE86-5322-4E5F-9E15-6A278DF6ED0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{167A207D-1D94-43AB-9F73-3C020784E7E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E5F4EE86-5322-4E5F-9E15-6A278DF6ED0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5F4EE86-5322-4E5F-9E15-6A278DF6ED0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5F4EE86-5322-4E5F-9E15-6A278DF6ED0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167A207D-1D94-43AB-9F73-3C020784E7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167A207D-1D94-43AB-9F73-3C020784E7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167A207D-1D94-43AB-9F73-3C020784E7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167A207D-1D94-43AB-9F73-3C020784E7E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

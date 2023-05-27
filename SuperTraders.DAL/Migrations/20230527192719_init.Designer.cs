@@ -12,7 +12,7 @@ using SuperTraders.DAL.Repository.Implementation.EntityFramework;
 namespace SuperTraders.DAL.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20230526194925_init")]
+    [Migration("20230527192719_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -40,16 +40,10 @@ namespace SuperTraders.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PortfolioId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("CustomerId");
-
-                    b.HasIndex("PortfolioId")
-                        .IsUnique();
 
                     b.ToTable("Customers");
 
@@ -57,42 +51,37 @@ namespace SuperTraders.DAL.Migrations
                         new
                         {
                             CustomerId = 1,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8500),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5786),
                             FullName = "Emre Kurtar",
-                            PortfolioId = 1,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8513)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5789)
                         },
                         new
                         {
                             CustomerId = 2,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8515),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5791),
                             FullName = "Can Avsar",
-                            PortfolioId = 2,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8516)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5792)
                         },
                         new
                         {
                             CustomerId = 3,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8517),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5793),
                             FullName = "Ugur Evren",
-                            PortfolioId = 3,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8518)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5793)
                         },
                         new
                         {
                             CustomerId = 4,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8518),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5794),
                             FullName = "Kemal Kilicdaroglu",
-                            PortfolioId = 4,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8519)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5794)
                         },
                         new
                         {
                             CustomerId = 5,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8520),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5795),
                             FullName = "Tayyip Erdogan",
-                            PortfolioId = 5,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8520)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5796)
                         });
                 });
 
@@ -118,6 +107,9 @@ namespace SuperTraders.DAL.Migrations
 
                     b.HasKey("PortfolioId");
 
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
                     b.ToTable("Portfolios");
 
                     b.HasData(
@@ -125,41 +117,41 @@ namespace SuperTraders.DAL.Migrations
                         {
                             PortfolioId = 1,
                             Balance = 100m,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5693),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6737),
                             CustomerId = 1,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5697)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6739)
                         },
                         new
                         {
                             PortfolioId = 2,
                             Balance = 90m,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5698),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6741),
                             CustomerId = 2,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5699)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6742)
                         },
                         new
                         {
                             PortfolioId = 3,
                             Balance = 85m,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5700),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6743),
                             CustomerId = 3,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5700)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6743)
                         },
                         new
                         {
                             PortfolioId = 4,
                             Balance = 80m,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5701),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6744),
                             CustomerId = 4,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5702)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6744)
                         },
                         new
                         {
                             PortfolioId = 5,
                             Balance = 75m,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5703),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6745),
                             CustomerId = 5,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5703)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6746)
                         });
                 });
 
@@ -185,23 +177,23 @@ namespace SuperTraders.DAL.Migrations
                         new
                         {
                             Symbol = "ATP",
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7149),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4649),
                             Price = 5m,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7152)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4661)
                         },
                         new
                         {
                             Symbol = "EKG",
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7153),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4664),
                             Price = 10m,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7154)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4664)
                         },
                         new
                         {
                             Symbol = "SIS",
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7155),
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4665),
                             Price = 15m,
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7155)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4666)
                         });
                 });
 
@@ -247,69 +239,69 @@ namespace SuperTraders.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7828),
-                            Direction = 0,
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7462),
+                            Direction = 1,
                             IsActive = true,
                             PortfolioId = 1,
                             Quantity = 2,
                             ShareSymbol = "ATP",
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7829)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7464)
                         },
                         new
                         {
                             ID = 2,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7832),
-                            Direction = 0,
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7466),
+                            Direction = 1,
                             IsActive = true,
                             PortfolioId = 2,
                             Quantity = 3,
                             ShareSymbol = "ATP",
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7832)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7466)
                         },
                         new
                         {
                             ID = 3,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7834),
-                            Direction = 0,
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7468),
+                            Direction = 1,
                             IsActive = true,
                             PortfolioId = 3,
                             Quantity = 4,
                             ShareSymbol = "EKG",
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7834)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7468)
                         },
                         new
                         {
                             ID = 4,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7836),
-                            Direction = 0,
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7469),
+                            Direction = 1,
                             IsActive = true,
                             PortfolioId = 4,
                             Quantity = 2,
                             ShareSymbol = "EKG",
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7836)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7469)
                         },
                         new
                         {
                             ID = 5,
-                            CreatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7838),
-                            Direction = 0,
+                            CreatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7470),
+                            Direction = 1,
                             IsActive = true,
                             PortfolioId = 5,
                             Quantity = 1,
                             ShareSymbol = "SIS",
-                            UpdatedAt = new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7838)
+                            UpdatedAt = new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7471)
                         });
                 });
 
-            modelBuilder.Entity("SuperTraders.Entities.Customer", b =>
+            modelBuilder.Entity("SuperTraders.Entities.Portfolio", b =>
                 {
-                    b.HasOne("SuperTraders.Entities.Portfolio", "Portfolio")
-                        .WithOne("Customer")
-                        .HasForeignKey("SuperTraders.Entities.Customer", "PortfolioId")
+                    b.HasOne("SuperTraders.Entities.Customer", "Customer")
+                        .WithOne("Portfolio")
+                        .HasForeignKey("SuperTraders.Entities.Portfolio", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Portfolio");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("SuperTraders.Entities.Trade", b =>
@@ -331,11 +323,14 @@ namespace SuperTraders.DAL.Migrations
                     b.Navigation("Share");
                 });
 
+            modelBuilder.Entity("SuperTraders.Entities.Customer", b =>
+                {
+                    b.Navigation("Portfolio")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SuperTraders.Entities.Portfolio", b =>
                 {
-                    b.Navigation("Customer")
-                        .IsRequired();
-
                     b.Navigation("Trades");
                 });
 

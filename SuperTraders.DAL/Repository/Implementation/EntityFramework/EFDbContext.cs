@@ -20,9 +20,9 @@ namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Data seed operations 
+            modelBuilder.ApplyConfiguration(new ShareConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
             modelBuilder.ApplyConfiguration(new PortfolioConfiguration());
-            modelBuilder.ApplyConfiguration(new ShareConfiguration());
             modelBuilder.ApplyConfiguration(new TradeConfiguration());
         }
 

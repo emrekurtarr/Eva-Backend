@@ -18,10 +18,9 @@ namespace SuperTraders.Entities
 
     }
 
-
     public enum Position
     {
-        Buy = 0,
-        Sell = 1,
+        Buy = 1,
+        Sell = 2,
     }
 }

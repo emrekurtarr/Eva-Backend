@@ -23,7 +23,6 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     UpdatedAt = DateTime.Now,
                     FullName = "Emre Kurtar",
                     CustomerId = 1,
-                    PortfolioId = 1
                 },
                 new Customer
                 {
@@ -31,7 +30,6 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     UpdatedAt = DateTime.Now,
                     FullName = "Can Avsar",
                     CustomerId = 2,
-                    PortfolioId = 2
                 },
                 new Customer
                 {
@@ -39,7 +37,6 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     UpdatedAt = DateTime.Now,
                     FullName = "Ugur Evren",
                     CustomerId = 3,
-                    PortfolioId = 3
                 },
                 new Customer
                 {
@@ -47,7 +44,6 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     UpdatedAt = DateTime.Now,
                     FullName = "Kemal Kilicdaroglu",
                     CustomerId = 4,
-                    PortfolioId = 4
                 },
                 new Customer
                 {
@@ -55,7 +51,6 @@ namespace SuperTraders.DAL.DataSeed.Configurations
                     UpdatedAt = DateTime.Now,
                     FullName = "Tayyip Erdogan",
                     CustomerId = 5,
-                    PortfolioId = 5
                 }
             );
         }

@@ -14,19 +14,18 @@ namespace SuperTraders.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Portfolios",
+                name: "Customers",
                 columns: table => new
                 {
-                    PortfolioId = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Portfolios", x => x.PortfolioId);
+                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,24 +43,24 @@ namespace SuperTraders.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Customers",
+                name: "Portfolios",
                 columns: table => new
                 {
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    PortfolioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PortfolioId = table.Column<int>(type: "int", nullable: false),
+                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                    table.PrimaryKey("PK_Portfolios", x => x.PortfolioId);
                     table.ForeignKey(
-                        name: "FK_Customers_Portfolios_PortfolioId",
-                        column: x => x.PortfolioId,
-                        principalTable: "Portfolios",
-                        principalColumn: "PortfolioId",
+                        name: "FK_Portfolios_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -97,15 +96,15 @@ namespace SuperTraders.DAL.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Portfolios",
-                columns: new[] { "PortfolioId", "Balance", "CreatedAt", "CustomerId", "UpdatedAt" },
+                table: "Customers",
+                columns: new[] { "CustomerId", "CreatedAt", "FullName", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 100m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5693), 1, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5697) },
-                    { 2, 90m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5698), 2, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5699) },
-                    { 3, 85m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5700), 3, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5700) },
-                    { 4, 80m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5701), 4, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5702) },
-                    { 5, 75m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5703), 5, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(5703) }
+                    { 1, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5786), "Emre Kurtar", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5789) },
+                    { 2, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5791), "Can Avsar", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5792) },
+                    { 3, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5793), "Ugur Evren", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5793) },
+                    { 4, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5794), "Kemal Kilicdaroglu", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5794) },
+                    { 5, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5795), "Tayyip Erdogan", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(5796) }
                 });
 
             migrationBuilder.InsertData(
@@ -113,21 +112,21 @@ namespace SuperTraders.DAL.Migrations
                 columns: new[] { "Symbol", "CreatedAt", "Price", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { "ATP", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7149), 5m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7152) },
-                    { "EKG", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7153), 10m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7154) },
-                    { "SIS", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7155), 15m, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7155) }
+                    { "ATP", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4649), 5m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4661) },
+                    { "EKG", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4664), 10m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4664) },
+                    { "SIS", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4665), 15m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(4666) }
                 });
 
             migrationBuilder.InsertData(
-                table: "Customers",
-                columns: new[] { "CustomerId", "CreatedAt", "FullName", "PortfolioId", "UpdatedAt" },
+                table: "Portfolios",
+                columns: new[] { "PortfolioId", "Balance", "CreatedAt", "CustomerId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8500), "Emre Kurtar", 1, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8513) },
-                    { 2, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8515), "Can Avsar", 2, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8516) },
-                    { 3, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8517), "Ugur Evren", 3, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8518) },
-                    { 4, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8518), "Kemal Kilicdaroglu", 4, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8519) },
-                    { 5, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8520), "Tayyip Erdogan", 5, new DateTime(2023, 5, 26, 22, 49, 25, 268, DateTimeKind.Local).AddTicks(8520) }
+                    { 1, 100m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6737), 1, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6739) },
+                    { 2, 90m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6741), 2, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6742) },
+                    { 3, 85m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6743), 3, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6743) },
+                    { 4, 80m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6744), 4, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6744) },
+                    { 5, 75m, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6745), 5, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(6746) }
                 });
 
             migrationBuilder.InsertData(
@@ -135,17 +134,17 @@ namespace SuperTraders.DAL.Migrations
                 columns: new[] { "ID", "CreatedAt", "Direction", "IsActive", "PortfolioId", "Quantity", "ShareSymbol", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7828), 0, true, 1, 2, "ATP", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7829) },
-                    { 2, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7832), 0, true, 2, 3, "ATP", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7832) },
-                    { 3, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7834), 0, true, 3, 4, "EKG", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7834) },
-                    { 4, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7836), 0, true, 4, 2, "EKG", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7836) },
-                    { 5, new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7838), 0, true, 5, 1, "SIS", new DateTime(2023, 5, 26, 22, 49, 25, 269, DateTimeKind.Local).AddTicks(7838) }
+                    { 1, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7462), 1, true, 1, 2, "ATP", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7464) },
+                    { 2, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7466), 1, true, 2, 3, "ATP", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7466) },
+                    { 3, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7468), 1, true, 3, 4, "EKG", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7468) },
+                    { 4, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7469), 1, true, 4, 2, "EKG", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7469) },
+                    { 5, new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7470), 1, true, 5, 1, "SIS", new DateTime(2023, 5, 27, 22, 27, 19, 595, DateTimeKind.Local).AddTicks(7471) }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customers_PortfolioId",
-                table: "Customers",
-                column: "PortfolioId",
+                name: "IX_Portfolios_CustomerId",
+                table: "Portfolios",
+                column: "CustomerId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -163,9 +162,6 @@ namespace SuperTraders.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Customers");
-
-            migrationBuilder.DropTable(
                 name: "Trades");
 
             migrationBuilder.DropTable(
@@ -173,6 +169,9 @@ namespace SuperTraders.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shares");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
         }
     }
 }

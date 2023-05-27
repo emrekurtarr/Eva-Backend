@@ -64,6 +64,11 @@ namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
             return await _dbSet.Where(predicate).FirstOrDefaultAsync();
         }
 
+        public async Task<T> GetAsyncAsNoTracking(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.AsNoTracking().Where(predicate).FirstOrDefaultAsync();
+        }
+
         public async Task<List<T>> GetListAsync(Expression<Func<T, bool>>? predicate = null)
         {
             List<T> result =  predicate == null ? await _dbSet.ToListAsync() : await _dbSet.Where(predicate).ToListAsync();
@@ -73,7 +78,7 @@ namespace SuperTraders.DAL.Repository.Implementation.EntityFramework
 
         public T Update(T entity)
         {
-            _dbSet.Entry(entity).State = EntityState.Modified;
+            _dbContext.Entry<T>(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
 
             return entity;
